@@ -16,7 +16,7 @@ class PetReport(models.Model):
     # -------------------------------------------------------------
     # NUEVO: URL de Firebase en lugar de Base64
     # -------------------------------------------------------------
-    image_url = models.URLField(max_length=500, blank=True, null=True, help_text="Enlace público de Firebase Storage")
+    image = models.ImageField(upload_to='pets_photos/', blank=True, null=True, help_text="Foto de la mascota")
     
     # -------------------------------------------------------------
     # CAMPOS DE IA (Para integración con Gemini)

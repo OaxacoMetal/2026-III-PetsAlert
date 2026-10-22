@@ -7,7 +7,7 @@ class UserProfile(models.Model):
     phone_number = models.CharField(max_length=20, blank=True, null=True, help_text="Número de contacto")
     
     # URL de Firebase Storage para la foto de perfil en lugar de Base64
-    avatar_url = models.URLField(max_length=500, blank=True, null=True, help_text="Enlace público del avatar en Firebase")
+    avatar = models.ImageField(upload_to='avatars/', blank=True, null=True)
 
     updated_at = models.DateTimeField(auto_now=True)
 

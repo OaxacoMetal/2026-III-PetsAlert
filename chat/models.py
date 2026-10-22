@@ -6,14 +6,13 @@ class Message(models.Model):
     receiver = models.ForeignKey(User, on_delete=models.CASCADE, related_name='received_messages')
     content = models.TextField(blank=True, null=True, help_text="Texto del mensaje")
     
-    # URL de Firebase para fotos enviadas por el chat
-    image_url = models.URLField(max_length=500, blank=True, null=True, help_text="Enlace de Firebase si envían foto")
+    # Imagen guardada localmente en el servidor
+    image = models.ImageField(upload_to='chat_images/', blank=True, null=True)
     
     is_read = models.BooleanField(default=False)
     timestamp = models.DateTimeField(auto_now_add=True)
 
     class Meta:
-        # Ordenamos del más antiguo al más nuevo (como en WhatsApp)
         ordering = ['timestamp']
 
     def __str__(self):
